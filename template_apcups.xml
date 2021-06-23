@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2021-06-23T21:05:03Z</date>
+    <date>2021-06-23T21:39:53Z</date>
     <groups>
         <group>
             <name>Templates/Server hardware</name>
@@ -94,7 +94,7 @@ please ensure that apcupsd is installed and configured correctly, and apcaccess 
                     <history>90d</history>
                     <trends>365d</trends>
                     <status>0</status>
-                    <value_type>3</value_type>
+                    <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>Volts</units>
                     <snmpv3_contextname/>
@@ -151,9 +151,9 @@ please ensure that apcupsd is installed and configured correctly, and apcaccess 
                     <key>ups.display_info</key>
                     <delay>30s</delay>
                     <history>90d</history>
-                    <trends>365d</trends>
+                    <trends>0</trends>
                     <status>0</status>
-                    <value_type>3</value_type>
+                    <value_type>4</value_type>
                     <allowed_hosts/>
                     <units/>
                     <snmpv3_contextname/>
@@ -391,7 +391,7 @@ please ensure that apcupsd is installed and configured correctly, and apcaccess 
                     <history>90d</history>
                     <trends>365d</trends>
                     <status>0</status>
-                    <value_type>3</value_type>
+                    <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>Minutes</units>
                     <snmpv3_contextname/>
@@ -450,7 +450,7 @@ please ensure that apcupsd is installed and configured correctly, and apcaccess 
                     <history>90d</history>
                     <trends>365d</trends>
                     <status>0</status>
-                    <value_type>3</value_type>
+                    <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>Volts</units>
                     <snmpv3_contextname/>
@@ -506,7 +506,7 @@ please ensure that apcupsd is installed and configured correctly, and apcaccess 
             <templates/>
             <screens>
                 <screen>
-                    <name>Test Sceen</name>
+                    <name>APC UPS Dash</name>
                     <hsize>2</hsize>
                     <vsize>2</vsize>
                     <screen_items>
