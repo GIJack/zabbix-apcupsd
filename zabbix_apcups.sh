@@ -10,8 +10,8 @@ UPS_HOST=127.0.0.1
 UPS_PORT=3551
 #/CONFIG
 
-function zsend {
-   ${ZABBIX_SENDER} -c $ZABBIX_CONF -k $1 -o $2
+zsend() {
+  ${ZABBIX_SENDER} -c "${ZABBIX_CONF}" -k $1 -o "${2}"
 }
 
 # Get data from UPS
