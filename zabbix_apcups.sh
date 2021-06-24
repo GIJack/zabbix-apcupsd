@@ -22,6 +22,7 @@ script is setup correctly. Config is at the top.
 "
   zsend ups.is_online 0
   zsend ups.status "¡software_failed!"
+  zsend ups.display_info "${DISPLAY_INFO}"
   exit 1
 }
 
