@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2021-06-24T03:48:33Z</date>
+    <date>2021-06-24T16:38:47Z</date>
     <groups>
         <group>
             <name>Templates/Server hardware</name>
@@ -54,6 +54,71 @@ please ensure that apcupsd is installed and configured correctly, and apcaccess 
                     <privatekey/>
                     <port/>
                     <description>How much battery remains, as a percent</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>apcupsd</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Battery Datestamp</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>ups.batterytimestamp</key>
+                    <delay>0</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>1</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Date Battery was installed to the UPS.&#13;
+&#13;
+This has to be updated manually via apctest. It also requires stopping apcupsd to do this. This is NOT done automatically. This date can be set to anything, and only works if you make it work.&#13;
+&#13;
+It is not expected to change.&#13;
+&#13;
+included because it might be useful in troubleshooting failures.(i.e. old battery)</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -150,7 +215,7 @@ please ensure that apcupsd is installed and configured correctly, and apcaccess 
                     <snmp_oid/>
                     <key>ups.display_info</key>
                     <delay>0</delay>
-                    <history>30d</history>
+                    <history>1d</history>
                     <trends>0</trends>
                     <status>0</status>
                     <value_type>4</value_type>
@@ -171,7 +236,7 @@ please ensure that apcupsd is installed and configured correctly, and apcaccess 
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>Audit info such as serial number and battery date</description>
+                    <description>Static information on the UPS. This information is not supposed to change, hence short storage period.</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -697,6 +762,25 @@ Server risks going offline.</description>
             <status>0</status>
             <priority>4</priority>
             <description>Checks if UPS is overloaded</description>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template - APC UPS:ups.status.str(¡software_failed!)}=1</expression>
+            <recovery_mode>1</recovery_mode>
+            <recovery_expression>{Template - APC UPS:ups.status.str(ONLINE)}=1</recovery_expression>
+            <name>UPS - Software Failure</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description>There is a failure with apcupsd.&#13;
+1. Check apcupsd is running&#13;
+2. Check that apcacess command can function&#13;
+3. check the zabbix_apcups.sh script to ensure it can run correctly as the zabbix user, and said user can run the apcaccess. absolute PATHs are at top of file. make sure these are correct.</description>
             <type>0</type>
             <manual_close>0</manual_close>
             <dependencies/>
