@@ -34,9 +34,7 @@ chgrp zabbix /etc/zabbix/scripts/zabbix_apcups.sh
 
 Use GNU Make
 
-* make install
-- installs files
-* make remove
-- removes installation
+* make install	- installs files
+* make remove	- removes installation
 
 
