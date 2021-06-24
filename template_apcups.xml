@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2021-06-24T16:38:47Z</date>
+    <date>2021-06-24T16:56:46Z</date>
     <groups>
         <group>
             <name>Templates/Server hardware</name>
@@ -670,7 +670,7 @@ included because it might be useful in troubleshooting failures.(i.e. old batter
     </templates>
     <triggers>
         <trigger>
-            <expression>{Template - APC UPS:ups.batterypercent.last()}=5</expression>
+            <expression>{Template - APC UPS:ups.batterypercent.last()}&lt;=5</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>UPS - Battery Critical</name>
@@ -688,7 +688,7 @@ Server risks going offline.</description>
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template - APC UPS:ups.batterypercent.last()}&lt;=10</expression>
+            <expression>{Template - APC UPS:ups.batterypercent.last()}&lt;=10 and {Template - APC UPS:ups.batterypercent.last()}&gt;5</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>UPS - Battery Low</name>
