@@ -28,7 +28,7 @@ chgrp zabbix /etc/zabbix/scripts/zabbix_apcups.sh
 * Add crontab entry
 ```
 #APC UPS Check:
-*/5 * * * * /etc/zabbix/scripts/zabbix_apcups.sh 1>/dev/null 2>/dev/null
+*/1 * * * * /etc/zabbix/scripts/zabbix_apcups.sh 1>/dev/null 2>/dev/null
 ```
 **OR**
 

@@ -1,2 +1,2 @@
 # Zabbix APC UPS Check:
-*/5 * * * * zabbix /etc/zabbix/scripts/zabbix_apcups.sh 1>/dev/null 2>/dev/null
+*/1 * * * * zabbix /etc/zabbix/scripts/zabbix_apcups.sh 1>/dev/null 2>/dev/null
