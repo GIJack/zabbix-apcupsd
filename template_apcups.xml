@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2021-06-24T18:05:34Z</date>
+    <date>2021-06-24T20:57:12Z</date>
     <groups>
         <group>
             <name>Templates/Server hardware</name>
@@ -571,8 +571,8 @@ included because it might be useful in troubleshooting failures.(i.e. old batter
             <templates/>
             <screens>
                 <screen>
-                    <name>APC UPS Dash</name>
-                    <hsize>2</hsize>
+                    <name>APC Power Dash</name>
+                    <hsize>3</hsize>
                     <vsize>2</vsize>
                     <screen_items>
                         <screen_item>
@@ -623,6 +623,28 @@ included because it might be useful in troubleshooting failures.(i.e. old batter
                             <resourcetype>0</resourcetype>
                             <width>400</width>
                             <height>200</height>
+                            <x>2</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>UPS Battery Percent Charge</name>
+                                <host>Template - APC UPS</host>
+                            </resource>
+                            <max_columns>3</max_columns>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>400</width>
+                            <height>200</height>
                             <x>0</x>
                             <y>1</y>
                             <colspan>1</colspan>
@@ -657,7 +679,29 @@ included because it might be useful in troubleshooting failures.(i.e. old batter
                             <dynamic>0</dynamic>
                             <sort_triggers>0</sort_triggers>
                             <resource>
-                                <name>UPS Load</name>
+                                <name>UPS Load and Availability</name>
+                                <host>Template - APC UPS</host>
+                            </resource>
+                            <max_columns>3</max_columns>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>400</width>
+                            <height>200</height>
+                            <x>2</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>UPS Battery Time Remaining</name>
                                 <host>Template - APC UPS</host>
                             </resource>
                             <max_columns>3</max_columns>
@@ -789,14 +833,14 @@ Server risks going offline.</description>
     </triggers>
     <graphs>
         <graph>
-            <name>UPS Load</name>
+            <name>UPS Battery Percent Charge</name>
             <width>500</width>
             <height>200</height>
             <yaxismin>0.0000</yaxismin>
-            <yaxismax>100.0000</yaxismax>
-            <show_work_period>1</show_work_period>
-            <show_triggers>1</show_triggers>
-            <type>0</type>
+            <yaxismax>0.0000</yaxismax>
+            <show_work_period>0</show_work_period>
+            <show_triggers>0</show_triggers>
+            <type>2</type>
             <show_legend>1</show_legend>
             <show_3d>0</show_3d>
             <percent_left>0.0000</percent_left>
@@ -809,7 +853,71 @@ Server risks going offline.</description>
                 <graph_item>
                     <sortorder>0</sortorder>
                     <drawtype>0</drawtype>
-                    <color>00C8C8</color>
+                    <color>2D68FB</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template - APC UPS</host>
+                        <key>ups.batterypercent</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>UPS Battery Time Remaining</name>
+            <width>500</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>0.0000</yaxismax>
+            <show_work_period>0</show_work_period>
+            <show_triggers>0</show_triggers>
+            <type>2</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>0</ymin_type_1>
+            <ymax_type_1>0</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>FBC02D</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template - APC UPS</host>
+                        <key>ups.timeleft</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>UPS Load and Availability</name>
+            <width>500</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>1</ymin_type_1>
+            <ymax_type_1>1</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>2DFB8C</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
@@ -825,7 +933,7 @@ Server risks going offline.</description>
             <width>500</width>
             <height>200</height>
             <yaxismin>0.0000</yaxismin>
-            <yaxismax>100.0000</yaxismax>
+            <yaxismax>1.2000</yaxismax>
             <show_work_period>1</show_work_period>
             <show_triggers>1</show_triggers>
             <type>0</type>
@@ -833,15 +941,15 @@ Server risks going offline.</description>
             <show_3d>0</show_3d>
             <percent_left>0.0000</percent_left>
             <percent_right>0.0000</percent_right>
-            <ymin_type_1>0</ymin_type_1>
-            <ymax_type_1>0</ymax_type_1>
+            <ymin_type_1>1</ymin_type_1>
+            <ymax_type_1>1</ymax_type_1>
             <ymin_item_1>0</ymin_item_1>
             <ymax_item_1>0</ymax_item_1>
             <graph_items>
                 <graph_item>
                     <sortorder>0</sortorder>
                     <drawtype>0</drawtype>
-                    <color>C800C8</color>
+                    <color>8C2DFB</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
@@ -873,7 +981,7 @@ Server risks going offline.</description>
                 <graph_item>
                     <sortorder>0</sortorder>
                     <drawtype>0</drawtype>
-                    <color>199C0D</color>
+                    <color>388E3C</color>
                     <yaxisside>0</yaxisside>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
@@ -885,8 +993,8 @@ Server risks going offline.</description>
                 <graph_item>
                     <sortorder>1</sortorder>
                     <drawtype>0</drawtype>
-                    <color>F63100</color>
-                    <yaxisside>0</yaxisside>
+                    <color>FF6F00</color>
+                    <yaxisside>1</yaxisside>
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
