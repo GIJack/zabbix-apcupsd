@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2021-06-23T21:39:53Z</date>
+    <date>2021-06-24T03:35:52Z</date>
     <groups>
         <group>
             <name>Templates/Server hardware</name>
@@ -145,11 +145,11 @@ please ensure that apcupsd is installed and configured correctly, and apcaccess 
                 </item>
                 <item>
                     <name>UPS Info</name>
-                    <type>0</type>
+                    <type>2</type>
                     <snmp_community/>
                     <snmp_oid/>
                     <key>ups.display_info</key>
-                    <delay>30s</delay>
+                    <delay>0</delay>
                     <history>90d</history>
                     <trends>0</trends>
                     <status>0</status>
