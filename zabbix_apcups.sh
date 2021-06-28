@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # NEEDS: apcaccess from apcupsd
 
@@ -20,6 +20,36 @@ datestamp() {
   date "${formatting}"
 }
 
+check_files() {
+  # check to ensure files in config exist, and that programs are executable
+  failures=0
+
+  # checking zabbix
+  if [ ! -f "${ZABBIX_CONF}" ];then
+    echo 1>&2 "ZABBIX_CONF Not found, check config at top of script"
+    failures=$(( ${failures} + 1 ))
+  fi
+  if [ ! -x "${ZABBIX_SENDER}" ];then
+    echo 1>&2 "ZABBIX_SENDER Not a program, check config at top of script. Looking for zabbix_sender in PATH"
+    which zabbix_sender
+    failures=$(( ${failures} + 1 ))
+  fi
+
+  # check apcaccess
+  if [ ! -x ${APCACCESS} ];then
+    echo 1>&2 "APACCESS not a program, check config at top of script. Looking for apcaccess in PATH"
+    which apcaccess
+    failures=$(( ${failures} + 1 ))
+  fi
+  
+  if [ $failures -gt 0 ];then
+    echo 1>&2 "Script config is not set up correctly. please check config at top of script. see errors above "
+    exit 1
+   else
+    return 0
+  fi
+}
+
 apcaccess_failed() {
   echo 1>&2  "apcaccess command failed. monitoring is broken, please check apcaccess and apcupsd to ensure it is setup and configured correctly. Also check config at top of this script."
   INFO="DATE	: $(datestamp)
@@ -34,6 +64,9 @@ try running apcaccess on the command line.
 }
 
 main() {
+  # check to make sure config is correct
+  check_files
+  
   # Get data from UPS
   DATA="$(${APCACCESS} -h ${UPS_HOST}:${UPS_PORT} )" || apcaccess_failed
 
@@ -72,6 +105,7 @@ EOF
   zsend ups.voltage $(echo "${DATA}" |grep -m1 LINEV | cut -d ":" -f 2|cut -d " " -f 2)
   zsend ups.bvoltage $(echo "${DATA}" |grep -m1 BATTV | cut -d ":" -f 2|cut -d " " -f 2)
   zsend ups.batterytimestamp $(echo "${DATA}" |grep -m1 BATTDATE | cut -d ":" -f 2|cut -d " " -f 2)
+  zsend ups.last_transfer $(echo "${DATA}" |grep -m1 LASTXFER | cut -d ":" -f 2|cut -d " " -f 2)
   zsend ups.status ${status}
   zsend ups.is_online ${is_online}
   zsend ups.display_info "${INFO}"
