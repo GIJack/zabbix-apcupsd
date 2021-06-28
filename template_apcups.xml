@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2021-06-24T20:57:12Z</date>
+    <date>2021-06-28T15:17:10Z</date>
     <groups>
         <group>
             <name>Templates/Server hardware</name>
@@ -679,7 +679,7 @@ included because it might be useful in troubleshooting failures.(i.e. old batter
                             <dynamic>0</dynamic>
                             <sort_triggers>0</sort_triggers>
                             <resource>
-                                <name>UPS Load and Availability</name>
+                                <name>UPS Load</name>
                                 <host>Template - APC UPS</host>
                             </resource>
                             <max_columns>3</max_columns>
@@ -855,7 +855,7 @@ Server risks going offline.</description>
                     <drawtype>0</drawtype>
                     <color>2D68FB</color>
                     <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
+                    <calc_fnc>9</calc_fnc>
                     <type>0</type>
                     <item>
                         <host>Template - APC UPS</host>
@@ -887,7 +887,7 @@ Server risks going offline.</description>
                     <drawtype>0</drawtype>
                     <color>FBC02D</color>
                     <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
+                    <calc_fnc>9</calc_fnc>
                     <type>0</type>
                     <item>
                         <host>Template - APC UPS</host>
@@ -897,14 +897,14 @@ Server risks going offline.</description>
             </graph_items>
         </graph>
         <graph>
-            <name>UPS Load and Availability</name>
+            <name>UPS Load</name>
             <width>500</width>
             <height>200</height>
             <yaxismin>0.0000</yaxismin>
             <yaxismax>100.0000</yaxismax>
             <show_work_period>1</show_work_period>
             <show_triggers>1</show_triggers>
-            <type>0</type>
+            <type>1</type>
             <show_legend>1</show_legend>
             <show_3d>0</show_3d>
             <percent_left>0.0000</percent_left>
@@ -936,7 +936,7 @@ Server risks going offline.</description>
             <yaxismax>1.2000</yaxismax>
             <show_work_period>1</show_work_period>
             <show_triggers>1</show_triggers>
-            <type>0</type>
+            <type>1</type>
             <show_legend>1</show_legend>
             <show_3d>0</show_3d>
             <percent_left>0.0000</percent_left>
