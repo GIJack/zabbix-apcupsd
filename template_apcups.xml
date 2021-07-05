@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2021-06-28T17:32:09Z</date>
+    <date>2021-07-05T20:13:05Z</date>
     <groups>
         <group>
             <name>Templates/Server hardware</name>
@@ -849,7 +849,7 @@ Server risks going offline.</description>
             <correlation_tag/>
             <url/>
             <status>0</status>
-            <priority>2</priority>
+            <priority>1</priority>
             <description>Triggers if UPS is on battery, recovers when UPS is online</description>
             <type>0</type>
             <manual_close>0</manual_close>
