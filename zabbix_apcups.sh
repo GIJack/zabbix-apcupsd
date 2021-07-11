@@ -99,7 +99,9 @@ EOF
   fi
   
   # update daemon
-  zsend ups.batterypercent $(echo "${DATA}" |grep -m1 BCHARGE | cut -d ":" -f 2| cut -d " " -f 2)
+  BATTERY_PERCENT=$(echo "${DATA}" |grep -m1 BCHARGE | cut -d ":" -f 2| cut -d " " -f 2)
+  zsend ups.batterypercent ${BATTERY_PERCENT}
+  zsend ups.percentinvert $( echo 100 - ${BATTERY_PERCENT} | bc )
   zsend ups.timeleft $(echo "${DATA}" |grep -m1 TIMELEFT | cut -d ":" -f 2| cut -d " " -f 2)
   zsend ups.load $(echo "${DATA}" |grep -m1 LOADPCT | cut -d ":" -f 2|cut -d " " -f 2)
   zsend ups.voltage $(echo "${DATA}" |grep -m1 LINEV | cut -d ":" -f 2|cut -d " " -f 2)
