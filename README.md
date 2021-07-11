@@ -37,4 +37,10 @@ Use GNU Make
 * make install	- installs files
 * make remove	- removes installation
 
+APCUPSD Config
+--------------
 
+optionally you can add the full pathname to zabbix_apcups.sh in
+/etc/apcupsd/ - onbattery,offbattery,commfailure,commok
+
+This way, zabbix gets updated every state change
