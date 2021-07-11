@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2021-07-05T20:13:05Z</date>
+    <date>2021-07-11T22:37:47Z</date>
     <groups>
         <group>
             <name>Templates/Server hardware</name>
@@ -778,7 +778,7 @@ Collected for troubleshooting drilldown.</description>
             <expression>{Template - APC UPS:ups.batterypercent.last()}&lt;=5</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
-            <name>UPS - Battery Critical</name>
+            <name>{HOST.NAME} - UPS - Battery Critical!</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -796,7 +796,7 @@ Server risks going offline.</description>
             <expression>{Template - APC UPS:ups.batterypercent.last()}&lt;=10 and {Template - APC UPS:ups.batterypercent.last()}&gt;5</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
-            <name>UPS - Battery Low</name>
+            <name>{HOST.NAME} - UPS - Battery Low</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -812,7 +812,7 @@ Server risks going offline.</description>
             <expression>{Template - APC UPS:ups.status.str(REPLACEBATT)}=1 or {Template - APC UPS:ups.status.str(NOBATT)}=1 or {Template - APC UPS:ups.status.str(COMMLOST)}=1</expression>
             <recovery_mode>1</recovery_mode>
             <recovery_expression>{Template - APC UPS:ups.status.str(ONLINE)}=1</recovery_expression>
-            <name>UPS - Check hardware</name>
+            <name>{HOST.NAME} - UPS - Check hardware</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -828,7 +828,7 @@ Server risks going offline.</description>
             <expression>{Template - APC UPS:ups.status.str(TRIM)}=1 or {Template - APC UPS:ups.status.str(CAL)}=1</expression>
             <recovery_mode>1</recovery_mode>
             <recovery_expression>{Template - APC UPS:ups.status.str(ONLINE)}=1</recovery_expression>
-            <name>UPS - Maintenance</name>
+            <name>{HOST.NAME} - UPS - Maintenance</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -844,7 +844,7 @@ Server risks going offline.</description>
             <expression>{Template - APC UPS:ups.status.str(ONBATT)}=1</expression>
             <recovery_mode>1</recovery_mode>
             <recovery_expression>{Template - APC UPS:ups.status.str(ONLINE)}=1</recovery_expression>
-            <name>UPS - On Battery</name>
+            <name>{HOST.NAME} - UPS - On Battery</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -860,7 +860,7 @@ Server risks going offline.</description>
             <expression>{Template - APC UPS:ups.status.str(OVERLOAD)}=1</expression>
             <recovery_mode>1</recovery_mode>
             <recovery_expression>{Template - APC UPS:ups.status.str(OVERLOAD)}=0</recovery_expression>
-            <name>UPS - Overload</name>
+            <name>{HOST.NAME} - UPS - Overload</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
@@ -876,7 +876,7 @@ Server risks going offline.</description>
             <expression>{Template - APC UPS:ups.status.str(¡software_failed!)}=1</expression>
             <recovery_mode>1</recovery_mode>
             <recovery_expression>{Template - APC UPS:ups.status.str(ONLINE)}=1</recovery_expression>
-            <name>UPS - Software Failure</name>
+            <name>{HOST.NAME} - UPS - Software Failure</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
