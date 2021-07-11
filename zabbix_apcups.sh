@@ -107,7 +107,7 @@ EOF
   zsend ups.voltage $(echo "${DATA}" |grep -m1 LINEV | cut -d ":" -f 2|cut -d " " -f 2)
   zsend ups.bvoltage $(echo "${DATA}" |grep -m1 BATTV | cut -d ":" -f 2|cut -d " " -f 2)
   zsend ups.batterytimestamp $(echo "${DATA}" |grep -m1 BATTDATE | cut -d ":" -f 2|cut -d " " -f 2)
-  zsend ups.last_transfer $(echo "${DATA}" |grep -m1 LASTXFER | cut -d ":" -f 2|cut -d " " -f 2)
+  zsend ups.last_transfer $(echo "${DATA}" |grep -m1 LASTXFER | cut -d ":" -f 2)
   zsend ups.status ${status}
   zsend ups.is_online ${is_online}
   zsend ups.display_info "${INFO}"
