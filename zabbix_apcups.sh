@@ -146,8 +146,8 @@ EOF
     fi
   fi
   
-    zsend ups.maxruntime "${MAXRUNTIME}"
-    zsend ups.timeran "${TIMERAN}"
+  zsend ups.maxruntime "${MAXRUNTIME}"
+  zsend ups.timeran "${TIMERAN}"
 }
 
 main "${@}"
