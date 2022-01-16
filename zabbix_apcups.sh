@@ -138,6 +138,7 @@ EOF
    else
      if [ ! -f "${VAR_DIR}/max_runtime" ];then
        MAXRUNTIME=0
+       TIMERAN=0
        echo ${MAXRUNTIME} > "${VAR_DIR}/max_runtime"
       else
        MAXRUNTIME=$(cat "${VAR_DIR}/max_runtime")
