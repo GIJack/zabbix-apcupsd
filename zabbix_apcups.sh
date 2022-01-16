@@ -147,7 +147,7 @@ EOF
   fi
   
     zsend ups.maxruntime "${MAXRUNTIME}"
-    zsend ups.timeran "${TIMERAN}" # If the battery is full, no time elapsed on battery
+    zsend ups.timeran "${TIMERAN}"
 }
 
 main "${@}"
