@@ -1,6 +1,8 @@
 # zabbix-apcupsd
 APC UPS monitoring using apcaccess for zabbix-agent
 
+developed and tested against Zabbix 4.0. All other versions unknown
+
 REQUIRES:
 * apcupsd - make this this program is properly running, and configured. make
 sure apcaccess gives proper results.
