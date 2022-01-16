@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2021-07-11T22:37:47Z</date>
+    <date>2022-01-16T02:27:01Z</date>
     <groups>
         <group>
             <name>Templates/Server hardware</name>
@@ -449,6 +449,124 @@ Collected for troubleshooting drilldown.</description>
                     <master_item/>
                 </item>
                 <item>
+                    <name>Battery Maximum Runtime</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>ups.maxruntime</key>
+                    <delay>0</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units>Minutes</units>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Maximum Runtime for UPS on battery power.</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>apcupsd</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Charge inverted</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>ups.percentinvert</key>
+                    <delay>0</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>Percent</units>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Inverse of battery percentage, for use with graphing</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>apcupsd</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
                     <name>UPS Status</name>
                     <type>2</type>
                     <snmp_community/>
@@ -536,6 +654,65 @@ Collected for troubleshooting drilldown.</description>
                     <privatekey/>
                     <port/>
                     <description>Time left before battery runs out, in minuetes</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>apcupsd</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <timeout>3s</timeout>
+                    <url/>
+                    <query_fields/>
+                    <posts/>
+                    <status_codes>200</status_codes>
+                    <follow_redirects>1</follow_redirects>
+                    <post_type>0</post_type>
+                    <http_proxy/>
+                    <headers/>
+                    <retrieve_mode>0</retrieve_mode>
+                    <request_method>0</request_method>
+                    <output_format>0</output_format>
+                    <allow_traps>0</allow_traps>
+                    <ssl_cert_file/>
+                    <ssl_key_file/>
+                    <ssl_key_password/>
+                    <verify_peer>0</verify_peer>
+                    <verify_host>0</verify_host>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Battery Time Ran</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>ups.timeran</key>
+                    <delay>0</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>Minutes</units>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>Amount of time already used on battery, inverse of time remaining</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -818,7 +995,12 @@ Server risks going offline.</description>
             <url/>
             <status>0</status>
             <priority>4</priority>
-            <description>Check for  replace battery, no battery, or communication lost errors.</description>
+            <description>One of the following states is active:&#13;
+1. No Battery&#13;
+2. Communication Lost - Cable unplugged&#13;
+3. Replace battery.&#13;
+&#13;
+Check hardware, and output of apcacess.</description>
             <type>0</type>
             <manual_close>0</manual_close>
             <dependencies/>
@@ -850,7 +1032,7 @@ Server risks going offline.</description>
             <url/>
             <status>0</status>
             <priority>1</priority>
-            <description>Triggers if UPS is on battery, recovers when UPS is online</description>
+            <description>UPS is on battery, recovers when UPS is online</description>
             <type>0</type>
             <manual_close>0</manual_close>
             <dependencies/>
@@ -866,7 +1048,7 @@ Server risks going offline.</description>
             <url/>
             <status>0</status>
             <priority>4</priority>
-            <description>Checks if UPS is overloaded</description>
+            <description>UPS overload status recieved</description>
             <type>0</type>
             <manual_close>0</manual_close>
             <dependencies/>
@@ -923,11 +1105,23 @@ Server risks going offline.</description>
                         <key>ups.batterypercent</key>
                     </item>
                 </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>FBC02D</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>9</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template - APC UPS</host>
+                        <key>ups.percentinvert</key>
+                    </item>
+                </graph_item>
             </graph_items>
         </graph>
         <graph>
             <name>UPS Battery Time Remaining</name>
-            <width>500</width>
+            <width>400</width>
             <height>200</height>
             <yaxismin>0.0000</yaxismin>
             <yaxismax>0.0000</yaxismax>
@@ -953,6 +1147,18 @@ Server risks going offline.</description>
                     <item>
                         <host>Template - APC UPS</host>
                         <key>ups.timeleft</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>F63100</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template - APC UPS</host>
+                        <key>ups.timeran</key>
                     </item>
                 </graph_item>
             </graph_items>

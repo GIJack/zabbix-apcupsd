@@ -8,7 +8,13 @@ ZABBIX_CONF=/etc/zabbix/zabbix_agentd.conf
 ZABBIX_SENDER=/usr/bin/zabbix_sender
 UPS_HOST=127.0.0.1
 UPS_PORT=3551
+VAR_DIR=/tmp/zabbix_apcups/
 #/CONFIG
+
+exit_with_error(){
+  echo 1>&2 "zabbix_apcups.sh: ERROR: ${2}"
+  exit ${1}
+}
 
 zsend() {
   key=${1}
@@ -45,12 +51,18 @@ check_files() {
     failures=$(( ${failures} + 1 ))
   fi
   
+  # check if vardir is a directory, if not create it
+  if [ ! -d "${VAR_DIR}" ];then
+    mkdir -p "${VAR_DIR}" || exit_with_error 1 "could not create directory for variables"
+  fi
+
   if [ $failures -gt 0 ];then
-    echo 1>&2 "Script config is not set up correctly. please check config at top of script. see errors above "
-    exit 1
+    exit_with_error 2 "Script config is not set up correctly. please check config at top of script. see errors above "
    else
     return 0
   fi
+  
+
 }
 
 apcaccess_failed() {
@@ -103,9 +115,10 @@ EOF
   
   # update daemon
   BATTERY_PERCENT=$(echo "${DATA}" |grep -m1 BCHARGE | cut -d ":" -f 2| cut -d " " -f 2)
+  BATTERY_TIMELEFT=$(echo "${DATA}" |grep -m1 TIMELEFT | cut -d ":" -f 2| cut -d " " -f 2)
   zsend ups.batterypercent ${BATTERY_PERCENT}
   zsend ups.percentinvert $( echo 100 - ${BATTERY_PERCENT} | bc )
-  zsend ups.timeleft $(echo "${DATA}" |grep -m1 TIMELEFT | cut -d ":" -f 2| cut -d " " -f 2)
+  zsend ups.timeleft "${BATTERY_TIMELEFT}"
   zsend ups.load $(echo "${DATA}" |grep -m1 LOADPCT | cut -d ":" -f 2|cut -d " " -f 2)
   zsend ups.voltage $(echo "${DATA}" |grep -m1 LINEV | cut -d ":" -f 2|cut -d " " -f 2)
   zsend ups.bvoltage $(echo "${DATA}" |grep -m1 BATTV | cut -d ":" -f 2|cut -d " " -f 2)
@@ -115,7 +128,25 @@ EOF
   zsend ups.status ${status}
   zsend ups.is_online ${is_online}
   zsend ups.display_info "${INFO}"
+  
+  # Calculate Maximum Runtime, and Time Ran
 
+  if [ "${BATTERY_PERCENT}" == "100.0" ];then
+    MAXRUNTIME="${BATTERY_TIMELEFT}"
+    TIMERAN="0"
+    echo "${MAXRUNTIME}" > "${VAR_DIR}/max_runtime"
+   else
+     if [ ! -f "${VAR_DIR}/max_runtime" ];then
+       MAXRUNTIME=0
+       echo ${MAXRUNTIME} > "${VAR_DIR}/max_runtime"
+      else
+       MAXRUNTIME=$(cat "${VAR_DIR}/max_runtime")
+       TIMERAN=$(echo "${MAXRUNTIME} - ${BATTERY_TIMELEFT}" | bc )
+    fi
+  fi
+  
+    zsend ups.maxruntime "${MAXRUNTIME}"
+    zsend ups.timeran "${TIMERAN}" # If the battery is full, no time elapsed on battery
 }
 
 main "${@}"
